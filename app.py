@@ -7,14 +7,11 @@ import requests
 
 @st.cache_resource
 def load_data():
-    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-    
-    movies_path = os.path.join(BASE_DIR, "movie_list.pkl")
-    vectors_path = os.path.join(BASE_DIR, "vectors.pkl")
+    with open("movie_list.pkl", "rb") as f:
+        movies = pickle.load(f)
 
-    movies = pickle.load(open(movies_path, "rb"))
-    similarity = pickle.load(open(vectors_path, "rb"))
-
+    with open("vectors.pkl", "rb") as f:
+        similarity = pickle.load(f)
     return movies, similarity
 
 
