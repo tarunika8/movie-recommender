@@ -7,9 +7,14 @@ from sklearn.metrics.pairwise import cosine_similarity
 
 @st.cache_resource
 def load_data():
-    movies = pickle.load(open('movie_list.pkl', 'rb'))
-    vectors = pickle.load(open('vectors.pkl', 'rb'))
-    similarity = cosine_similarity(vectors)
+    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+    
+    movies_path = os.path.join(BASE_DIR, "movie_list.pkl")
+    vectors_path = os.path.join(BASE_DIR, "vectors.pkl")
+
+    movies = pickle.load(open(movies_path, "rb"))
+    similarity = pickle.load(open(vectors_path, "rb"))
+
     return movies, similarity
 
 
