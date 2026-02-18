@@ -1,6 +1,7 @@
 import pickle
 import streamlit as st
 import requests
+from sklearn.metrics.pairwise import cosine_similarity
 
 
 
