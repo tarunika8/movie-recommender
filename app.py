@@ -7,11 +7,9 @@ import requests
 
 @st.cache_resource
 def load_data():
-    with open("movie_list.pkl", "rb") as f:
-        movies = pickle.load(f)
-
-    with open("vectors.pkl", "rb") as f:
-        similarity = pickle.load(f)
+    movies = pickle.load(open("movie_list.pkl","rb"))
+    vectors = pickle.load(open("vectors.pkl","rb"))
+    similarity = cosine_similarity(vectors)
     return movies, similarity
 
 
